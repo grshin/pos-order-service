@@ -13,3 +13,10 @@ inventory:
 logging:
   level:
     root: INFO
+
+# Swagger-UI
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
