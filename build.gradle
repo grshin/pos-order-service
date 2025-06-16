@@ -16,10 +16,13 @@ java {
 
 repositories {
 	mavenCentral()
+    flatDir {
+        dirs '../common/build/libs'  // common JAR 파일 위치
+    }
 }
 
 dependencies {
-	implementation project(':common')
+    implementation name: 'common-0.0.1-SNAPSHOT'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	 // ↓ RestTemplate 사용 시 필요
