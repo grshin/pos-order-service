@@ -44,31 +44,24 @@ public class OrderController {
     public List<Order> getAllOrders() {
         return orderService.getAllOrders();
     }
-    
+
     @Operation(summary = "주문 상세 조회", description = "주문 ID를 이용해 특정 주문 정보를 조회합니다.")
     @GetMapping("/{id}")
-    public Order getOrder(
-        @Parameter(description = "주문 ID", example = "1")
-        @PathVariable Long id
-    ) {
+    public Order getOrder(@Parameter(description = "주문 ID", example = "1") @PathVariable Long id) {
         return orderService.getOrderById(id);
     }
 
     @Operation(summary = "주문 생성", description = "신규 주문을 등록합니다.")
     @PostMapping
     public Order createOrder(
-        @Parameter(description = "주문 정보 JSON", required = true)
-        @RequestBody Order order
-    ) {
+            @Parameter(description = "주문 정보 JSON", required = true) @RequestBody Order order) {
         return orderService.createOrder(order);
     }
 
     @Operation(summary = "주문 삭제", description = "주문 ID를 이용해 특정 주문을 삭제합니다.")
     @DeleteMapping("/{id}")
     public void deleteOrder(
-        @Parameter(description = "삭제할 주문 ID", example = "1")
-        @PathVariable Long id
-    ) {
+            @Parameter(description = "삭제할 주문 ID", example = "1") @PathVariable Long id) {
         orderService.deleteOrder(id);
     }
 }

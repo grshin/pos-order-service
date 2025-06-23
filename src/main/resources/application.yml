@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 
 spring:
   application:
@@ -7,7 +7,7 @@ spring:
 
 # inventory-service의 내부 Docker 네트워크 기준 주소
 inventory:
-  url: http://inventory-service:8080
+  url: http://inventory-service:8082
 
 # 로그 레벨 설정 (선택)
 logging:
