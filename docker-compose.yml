@@ -1,0 +1,15 @@
+services:
+  order-service:
+    container_name: pos-order-service
+    image: pos-order-service
+    build:
+      context: .
+    ports:
+      - "8081:8080"
+    depends_on:
+      - eureka-server
+    networks:
+      - msa-network
+    environment:
+      - SPRING_APPLICATION_NAME=pos-order-service
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka

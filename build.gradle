@@ -15,19 +15,35 @@ java {
 }
 
 repositories {
-    mavenLocal()        // ← 반드시 이게 먼저 와야 함!
+    maven {
+        url = uri("https://maven.pkg.github.com/grshin/pos-common")
+        credentials {
+            username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+            password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+        }
+    }
     mavenCentral()
 }
 
 dependencies {
     implementation 'com.pos:common:0.0.1-SNAPSHOT'
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	 // ↓ RestTemplate 사용 시 필요
-    implementation 'org.springframework.boot:spring-boot-starter'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter' // RestTemplate 사용 시
+
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'
+
+    // ✅ Eureka Client 추가
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2022.0.4" // Spring Boot 3.1.x용 BOM
+    }
 }
 
 tasks.named('test') {

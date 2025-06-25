@@ -3,11 +3,16 @@ server:
 
 spring:
   application:
-    name: order-service
+    name: pos-order-service
 
 # inventory-service의 내부 Docker 네트워크 기준 주소
 inventory:
   url: http://inventory-service:8082
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka
 
 # 로그 레벨 설정 (선택)
 logging:
