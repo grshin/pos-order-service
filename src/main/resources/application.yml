@@ -11,10 +11,10 @@ inventory:
 
 eureka:
   client:
-    service-url:
+    serviceUrl: # ✅ camelCase
       defaultZone: http://eureka-server:8761/eureka
-    register-with-eureka: true # Eureka 서버에 자신 등록
-    fetch-registry: true # 레지스트리 조회 활성화
+    register-with-eureka: true
+    fetch-registry: true
 
 # 로그 레벨 설정 (선택)
 logging:
