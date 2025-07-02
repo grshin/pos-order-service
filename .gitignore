@@ -17,6 +17,7 @@ Thumbs.db
 *.ear
 *.tmp
 *.out
++!gradle/wrapper/gradle-wrapper.jar  # ✅ Gradle Wrapper JAR은 예외 처리
 
 # === Build ===
 .gradle/
